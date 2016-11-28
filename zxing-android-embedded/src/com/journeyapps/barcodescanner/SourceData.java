@@ -2,7 +2,6 @@ package com.journeyapps.barcodescanner;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
@@ -64,6 +63,14 @@ public class SourceData {
      */
     public void setCropRect(Rect cropRect) {
         this.cropRect = cropRect;
+
+        // 기존 기능대로 Rect 안에 들어온 모든 코드를 측정하는 것이 아닌
+        // 중앙선을 기준으로 좁은 height 영역만 측정
+        if (cropRect.bottom - cropRect.top >= 20) {
+            int center = (cropRect.top + cropRect.bottom) / 2;
+            this.cropRect.top = center - 1;
+            this.cropRect.bottom = center + 1;
+        }
     }
 
     public byte[] getData() {
