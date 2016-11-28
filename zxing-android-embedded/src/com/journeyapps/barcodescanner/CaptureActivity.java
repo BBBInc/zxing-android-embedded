@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.KeyEvent;
 
+import com.google.zxing.client.android.Intents;
 import com.google.zxing.client.android.R;
 
 /**
@@ -17,6 +18,9 @@ public class CaptureActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getIntent().putExtra(Intents.Scan.BEEP_ENABLED, false);
+        getIntent().putExtra(Intents.Scan.BARCODE_IMAGE_ENABLED, false);
 
         barcodeScannerView = initializeContent();
 

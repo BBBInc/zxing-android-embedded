@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.zxing.client.android.Intents;
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 
@@ -35,6 +36,9 @@ public class CustomScannerActivity extends Activity implements
         if (!hasFlash()) {
             switchFlashlightButton.setVisibility(View.GONE);
         }
+
+        getIntent().putExtra(Intents.Scan.BEEP_ENABLED, false);
+        getIntent().putExtra(Intents.Scan.BARCODE_IMAGE_ENABLED, false);
 
         capture = new CaptureManager(this, barcodeScannerView);
         capture.initializeFromIntent(getIntent(), savedInstanceState);
