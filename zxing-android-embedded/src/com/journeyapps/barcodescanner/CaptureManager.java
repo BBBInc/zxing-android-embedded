@@ -71,8 +71,7 @@ public class CaptureManager {
     private BarcodeCallback callback = new BarcodeCallback() {
         @Override
         public void barcodeResult(final BarcodeResult result) {
-            barcodeView.pause();
-            beepManager.playBeepSoundAndVibrate();
+            doOnBarcodeResult();
 
             handler.post(new Runnable() {
                 @Override
@@ -88,6 +87,11 @@ public class CaptureManager {
 
         }
     };
+
+    public void doOnBarcodeResult() {
+        barcodeView.pause();
+        beepManager.playBeepSoundAndVibrate();
+    }
 
     private final CameraPreview.StateListener stateListener = new CameraPreview.StateListener() {
         @Override
