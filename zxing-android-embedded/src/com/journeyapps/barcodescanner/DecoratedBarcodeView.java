@@ -134,6 +134,12 @@ public class DecoratedBarcodeView extends FrameLayout {
 
         CameraSettings settings = new CameraSettings();
 
+        // Customizing by WS
+        settings.setExposureEnabled(false);
+        settings.setAutoFocusEnabled(true);
+        settings.setMeteringEnabled(false);
+        settings.setFocusMode(CameraSettings.FocusMode.MACRO);
+
         if (intent.hasExtra(Intents.Scan.CAMERA_ID)) {
             int cameraId = intent.getIntExtra(Intents.Scan.CAMERA_ID, -1);
             if (cameraId >= 0) {

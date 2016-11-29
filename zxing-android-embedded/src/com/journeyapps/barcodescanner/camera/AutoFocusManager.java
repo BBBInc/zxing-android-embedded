@@ -32,7 +32,7 @@ public final class AutoFocusManager {
 
     private static final String TAG = AutoFocusManager.class.getSimpleName();
 
-    private static final long AUTO_FOCUS_INTERVAL_MS = 100L;
+    private static final long AUTO_FOCUS_INTERVAL_MS = 2000L;
 
     private boolean stopped;
     private boolean focusing;
@@ -46,7 +46,9 @@ public final class AutoFocusManager {
 
     static {
         FOCUS_MODES_CALLING_AF = new ArrayList<>(2);
-        FOCUS_MODES_CALLING_AF.add(Camera.Parameters.FOCUS_MODE_AUTO);
+        // Customized by WS
+        // 아래 라인이 있으면 바로 매크로 상태의 포커스부터 시작하지 않음
+//        FOCUS_MODES_CALLING_AF.add(Camera.Parameters.FOCUS_MODE_AUTO);
         FOCUS_MODES_CALLING_AF.add(Camera.Parameters.FOCUS_MODE_MACRO);
     }
 
